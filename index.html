@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Primer Año Juntos 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header principal -->
+    <header class="main-header">
+        <div class="header-decoration">
+            <span class="sparkle">✨</span>
+            <span class="heart">💖</span>
+            <span class="sparkle">✨</span>
+        </div>
+        <h1 class="main-title">Nuestro Primer Año Juntos</h1>
+        <p class="subtitle">365 días de amor, risas y momentos mágicos</p>
+        <div class="cherry-blossoms">
+            <span class="blossom">🌸</span>
+            <span class="blossom">🌸</span>
+            <span class="blossom">🌸</span>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <main class="container">
+        <div class="intro-text">
+            <p>Cada día especial es un tesoro en nuestro corazón 💝</p>
+        </div>
+
+        <!-- Cuadrícula de días especiales -->
+        <div class="days-grid" id="daysGrid">
+            <!-- Los días se generarán dinámicamente con JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal para mostrar detalles del día -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-date" id="modalDate"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-images" id="modalImages"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elementos decorativos flotantes -->
+    <div class="floating-hearts">
+        <span class="floating-heart">💕</span>
+        <span class="floating-heart">💖</span>
+        <span class="floating-heart">💝</span>
+        <span class="floating-heart">💗</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
