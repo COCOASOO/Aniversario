@@ -91,7 +91,6 @@ export function MusicPlayer({
       <audio
         ref={audioRef}
         src={tracks[currentTrack]?.url}
-        volume={volume}
         onEnded={nextTrack}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}

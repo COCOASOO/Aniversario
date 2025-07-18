@@ -65,31 +65,20 @@ export function TimelineItem({ day, index, isActive, isLeft }: TimelineItemProps
   return (
     <div
       ref={itemRef}
-      className={`timeline-item relative flex items-center min-h-screen py-20 ${
+      className={`timeline-item relative flex items-center min-h-[60vh] py-12 ${
         isLeft ? "justify-start" : "justify-end"
       }`}
     >
-      {/* Punto de la timeline */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-        <div
-          className={`w-6 h-6 rounded-full border-4 border-white shadow-lg transition-all duration-500 ${
-            isActive ? "bg-pink-400 scale-150 shadow-pink-300/50" : "bg-purple-300 scale-100"
-          }`}
-        >
-          {isActive && <div className="absolute inset-0 rounded-full bg-pink-400 animate-ping"></div>}
-        </div>
-      </div>
-
-      {/* Contenido */}
+      {/* Contenido - sin punto central */}
       <div
-        className={`w-full max-w-lg transition-all duration-700 ${
+        className={`w-full max-w-2xl transition-all duration-700 ${
           isVisible
-            ? `opacity-100 ${isLeft ? "translate-x-0" : "translate-x-0"}`
-            : `opacity-0 ${isLeft ? "-translate-x-20" : "translate-x-20"}`
-        } ${isLeft ? "mr-auto pr-16" : "ml-auto pl-16"}`}
+            ? `opacity-100 translate-y-0 ${isLeft ? "translate-x-0" : "translate-x-0"}`
+            : `opacity-0 translate-y-8 ${isLeft ? "-translate-x-20" : "translate-x-20"}`
+        } ${isLeft ? "mr-auto" : "ml-auto"}`}
       >
         <div
-          className={`relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border-2 transition-all duration-500 overflow-hidden ${
+          className={`relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl border-2 transition-all duration-500 overflow-hidden min-h-[400px] ${
             isActive ? "border-pink-300 shadow-pink-200/50 scale-105" : "border-purple-200 hover:border-pink-200"
           } ${isExpanded ? "shadow-2xl border-pink-400" : ""} ${stickerRemoved ? "cursor-pointer" : ""}`}
           onClick={handleCardClick}
@@ -101,33 +90,33 @@ export function TimelineItem({ day, index, isActive, isLeft }: TimelineItemProps
               <div className="absolute inset-0 bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 rounded-3xl"></div>
 
               {/* Contenido de la pegatina */}
-              <div className="relative h-full flex flex-col items-center justify-center text-white p-6">
+              <div className="relative h-full flex flex-col items-center justify-center text-white p-8">
                 {/* Decoración superior */}
-                <div className="absolute top-4 left-4 text-2xl animate-bounce">✨</div>
-                <div className="absolute top-4 right-4 text-2xl animate-bounce delay-300">💫</div>
+                <div className="absolute top-6 left-6 text-3xl animate-bounce">✨</div>
+                <div className="absolute top-6 right-6 text-3xl animate-bounce delay-300">💫</div>
 
                 {/* Número del día en la pegatina */}
-                <div className="font-dancing text-6xl font-bold mb-4 drop-shadow-lg animate-pulse">{day.id}</div>
+                <div className="font-dancing text-7xl font-bold mb-6 drop-shadow-lg animate-pulse">{day.id}</div>
 
                 {/* Texto de la pegatina */}
                 <div className="text-center">
-                  <h3 className="text-xl font-bold mb-2 drop-shadow-md">¡Sorpresa!</h3>
-                  <p className="text-sm opacity-90 mb-4">Click para descubrir este momento especial</p>
+                  <h3 className="text-2xl font-bold mb-3 drop-shadow-md">¡Sorpresa!</h3>
+                  <p className="text-base opacity-90 mb-6">Click para descubrir este momento especial</p>
                 </div>
 
                 {/* Decoración inferior */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  <span className="text-lg animate-bounce">💕</span>
-                  <span className="text-lg animate-bounce delay-200">🎁</span>
-                  <span className="text-lg animate-bounce delay-400">💖</span>
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                  <span className="text-2xl animate-bounce">💕</span>
+                  <span className="text-2xl animate-bounce delay-200">🎁</span>
+                  <span className="text-2xl animate-bounce delay-400">💖</span>
                 </div>
 
                 {/* Efecto de brillo */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer"></div>
 
                 {/* Esquinas despegables */}
-                <div className="absolute top-2 right-2 w-6 h-6 bg-white/30 rounded-full animate-pulse"></div>
-                <div className="absolute bottom-2 left-2 w-4 h-4 bg-white/20 rounded-full animate-pulse delay-500"></div>
+                <div className="absolute top-3 right-3 w-8 h-8 bg-white/30 rounded-full animate-pulse"></div>
+                <div className="absolute bottom-3 left-3 w-6 h-6 bg-white/20 rounded-full animate-pulse delay-500"></div>
               </div>
             </div>
           )}
@@ -135,18 +124,18 @@ export function TimelineItem({ day, index, isActive, isLeft }: TimelineItemProps
           {/* Contenido real de la tarjeta */}
           <div className={`transition-all duration-500 ${stickerRemoved ? "opacity-100" : "opacity-0"}`}>
             {/* Header siempre visible */}
-            <div className="p-6 pb-4">
+            <div className="p-8 pb-6">
               {/* Número del día */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="font-dancing text-3xl font-bold text-pink-500">Día {day.id}</div>
-                <div className="text-sm text-purple-600 bg-purple-100 px-3 py-1 rounded-full">{day.date}</div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="font-dancing text-4xl font-bold text-pink-500">Día {day.id}</div>
+                <div className="text-sm text-purple-600 bg-purple-100 px-4 py-2 rounded-full">{day.date}</div>
               </div>
 
               {/* Título */}
-              <h3 className="text-2xl font-bold text-purple-800 mb-4">{day.title}</h3>
+              <h3 className="text-2xl font-bold text-purple-800 mb-6">{day.title}</h3>
 
               {/* Preview */}
-              <p className="text-purple-600 leading-relaxed mb-4">{day.preview}</p>
+              <p className="text-purple-600 leading-relaxed mb-6 text-lg">{day.preview}</p>
 
               {/* Indicador de expansión */}
               {stickerRemoved && (
@@ -156,8 +145,8 @@ export function TimelineItem({ day, index, isActive, isLeft }: TimelineItemProps
                       isExpanded ? "rotate-180" : ""
                     }`}
                   >
-                    <span className="text-sm font-medium">{isExpanded ? "Ocultar detalles" : "Ver detalles"}</span>
-                    <span className="text-lg">↓</span>
+                    <span className="text-base font-medium">{isExpanded ? "Ocultar detalles" : "Ver detalles"}</span>
+                    <span className="text-xl">↓</span>
                   </div>
                 </div>
               )}
@@ -169,7 +158,7 @@ export function TimelineItem({ day, index, isActive, isLeft }: TimelineItemProps
                 isExpanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="px-6 pb-6">
+              <div className="px-8 pb-8">
                 {/* Línea separadora */}
                 <div className="w-full h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent mb-6"></div>
 

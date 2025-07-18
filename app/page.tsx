@@ -5,6 +5,7 @@ import { TimelineItem } from "@/components/TimelineItem"
 import { MusicPlayer } from "@/components/MusicPlayer"
 import { ScrollProgress } from "@/components/ScrollProgress"
 import { FloatingElements } from "@/components/FloatingElements"
+import { SimpleConnection } from "@/components/SimpleConnection"
 import { specialDays } from "@/data/specialDays"
 import { musicTracks } from "@/data/musicTracks"
 
@@ -77,30 +78,24 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Timeline principal */}
+      {/* Timeline principal con líneas simples */}
       <main className="relative" ref={timelineRef}>
-        {/* Línea central de la timeline */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-pink-300 via-purple-300 to-blue-300 h-full z-0"></div>
-
-        {/* Items de la timeline */}
         <div className="max-w-6xl mx-auto px-4">
           {specialDays.map((day, index) => (
-            <TimelineItem
-              key={day.id}
-              day={day}
-              index={index}
-              isActive={activeSection === index}
-              isLeft={index % 2 === 0}
-            />
+            <div key={day.id} className="relative">
+              <TimelineItem day={day} index={index} isActive={activeSection === index} isLeft={index % 2 === 0} />
+
+              {/* Línea simple (no mostrar después del último elemento) */}
+              {index < specialDays.length - 1 && (
+                <SimpleConnection index={index} isActive={activeSection === index || activeSection === index + 1} />
+              )}
+            </div>
           ))}
         </div>
 
         {/* Final de la timeline */}
         <div className="relative text-center py-20">
-          {/* Terminar la línea antes del círculo final */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-pink-300 via-purple-300 to-transparent h-10 -top-10 z-0"></div>
-
-          {/* Círculo final sin línea atravesándolo */}
+          {/* Círculo final */}
           <div className="relative z-10 mb-8">
             <div className="inline-block bg-gradient-to-r from-pink-400 to-purple-400 rounded-full p-8 shadow-2xl animate-pulse">
               <span className="text-5xl">💕</span>

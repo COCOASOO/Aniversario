@@ -256,6 +256,10 @@
   animation: shimmer 2s infinite;
 }
 
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
 /* Animaciones de pegatinas */
 .animate-peel-up {
   animation: peel-up 0.8s ease-out forwards;
